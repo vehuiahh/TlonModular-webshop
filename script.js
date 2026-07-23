@@ -1,0 +1,154 @@
+/* ==========================================================================
+   TLÖN — shared behaviour
+   Linked from index.html now; also meant to be reused (as "../script.js")
+   from /pages/*.html and /products/*.html later.
+   ========================================================================== */
+
+(function () {
+  "use strict";
+
+  /* ------------------------------------------------------------------
+     Pedal art — drawn in code so no external product photos are needed.
+     ------------------------------------------------------------------ */
+  const PEDAL_DATA = {
+    alevosia: {
+      label: "ALEVOSÍA",
+      body: "#8a5a33",
+      bodyLight: "#a9754a",
+      knob: "#1a1a1a",
+      rows: [1, 3],
+      footswitches: 1
+    },
+    menjurje: {
+      label: "MENJURJE",
+      body: "#f4f1ea",
+      bodyLight: "#ffffff",
+      knob: "#3b7d6b",
+      rows: [3, 3],
+      footswitches: 2,
+      dark: false,
+      textColor: "#1a1a1a"
+    },
+    suavicrema: {
+      label: "SUAVICREMA",
+      body: "#2f5f86",
+      bodyLight: "#3d76a3",
+      knob: "#e8c84a",
+      rows: [3],
+      footswitches: 1
+    }
+  };
+
+  function knobSVG(cx, cy, r, fill) {
+    return `
+      <circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" stroke="rgba(0,0,0,.35)" stroke-width="1"/>
+      <line x1="${cx}" y1="${cy}" x2="${cx}" y2="${cy - r + 4}" stroke="rgba(0,0,0,.5)" stroke-width="2" stroke-linecap="round"/>
+    `;
+  }
+
+  function buildPedalSVG(key) {
+    const d = PEDAL_DATA[key];
+    if (!d) return "";
+
+    const width = 220, height = 240;
+    let knobsSVG = "";
+    let y = 74;
+    d.rows.forEach((count) => {
+      const startX = width / 2 - ((count - 1) * 52) / 2;
+      for (let i = 0; i < count; i++) {
+        knobsSVG += knobSVG(startX + i * 52, y, 15, d.knob);
+      }
+      y += 52;
+    });
+
+    const footswitches = [];
+    const fsY = height - 40;
+    if (d.footswitches === 1) {
+      footswitches.push(width / 2);
+    } else {
+      const gap = 60;
+      const start = width / 2 - (gap * (d.footswitches - 1)) / 2;
+      for (let i = 0; i < d.footswitches; i++) footswitches.push(start + i * gap);
+    }
+    const footswitchSVG = footswitches
+      .map(
+        (x) => `
+        <circle cx="${x}" cy="${fsY}" r="18" fill="#161616" stroke="rgba(0,0,0,.4)" stroke-width="2"/>
+        <circle cx="${x}" cy="${fsY}" r="11" fill="#cfcfcf" opacity=".9"/>`
+      )
+      .join("");
+
+    const textColor = d.textColor || "#f4f1ea";
+
+    return `
+    <svg viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${d.label} pedal illustration">
+      <defs>
+        <linearGradient id="grad-${key}" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="${d.bodyLight}"/>
+          <stop offset="100%" stop-color="${d.body}"/>
+        </linearGradient>
+      </defs>
+
+      <rect x="14" y="14" width="${width - 28}" height="${height - 28}" rx="10"
+            fill="url(#grad-${key})" stroke="rgba(0,0,0,.25)" stroke-width="1.5"/>
+
+      <circle cx="26" cy="26" r="2.5" fill="rgba(0,0,0,.35)"/>
+      <circle cx="${width - 26}" cy="26" r="2.5" fill="rgba(0,0,0,.35)"/>
+      <circle cx="26" cy="${height - 26}" r="2.5" fill="rgba(0,0,0,.35)"/>
+      <circle cx="${width - 26}" cy="${height - 26}" r="2.5" fill="rgba(0,0,0,.35)"/>
+
+      <circle cx="26" cy="${height / 2}" r="7" fill="#0c0c0c" stroke="rgba(0,0,0,.3)"/>
+      <circle cx="${width - 26}" cy="${height / 2}" r="7" fill="#0c0c0c" stroke="rgba(0,0,0,.3)"/>
+
+      ${knobsSVG}
+
+      <text x="${width / 2}" y="${fsY - 30}" text-anchor="middle"
+            font-family="'Playfair Display', serif" font-size="14" letter-spacing="1.5"
+            fill="${textColor}" font-weight="700">${d.label}</text>
+
+      ${footswitchSVG}
+    </svg>`;
+  }
+
+  function mountPedalArt() {
+    document.querySelectorAll("[data-pedal]").forEach((el) => {
+      const key = el.getAttribute("data-pedal");
+      el.innerHTML = buildPedalSVG(key);
+    });
+  }
+
+  /* ------------------------------------------------------------------
+     Newsletter form (demo only — no backend is connected)
+     ------------------------------------------------------------------ */
+  function initNewsletterForms() {
+    document.querySelectorAll(".newsletter-form").forEach((form) => {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const msg = form.parentElement.querySelector(".newsletter-msg");
+        const emailInput = form.querySelector('input[type="email"]');
+        if (msg) {
+          msg.textContent =
+            emailInput && emailInput.value
+              ? "You're on the list. Thank you."
+              : "Please enter an email address.";
+        }
+        if (emailInput && emailInput.value) form.reset();
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------------
+     Footer year
+     ------------------------------------------------------------------ */
+  function setYear() {
+    document.querySelectorAll("[data-year]").forEach((el) => {
+      el.textContent = new Date().getFullYear();
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    mountPedalArt();
+    initNewsletterForms();
+    setYear();
+  });
+})();
