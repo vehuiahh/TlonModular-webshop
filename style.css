@@ -100,7 +100,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
    ========================================================================== */
 .site-title-wrap{
   text-align: center;
-  padding: 24px 20px 36px;
+  padding: 1px 20px 36px;
 }
 .site-title{
   font-family: var(--font-title);
@@ -111,7 +111,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   display: inline-block;
 }
 .site-subtitle{
-  margin: 14px 0 0;
+  margin: 4px 0 0;
   font-family: 'Courier New', Courier, monospace;
   font-size: 12.5px;
   letter-spacing: 0.14em;
@@ -135,7 +135,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   display: flex;
   justify-content: center;
   gap: 48px;
-  padding: 16px 40px;
+  padding: 6px 40px;
 }
 .site-nav a{
   font-size: 13px;
@@ -261,7 +261,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   padding-top: 48px;
 }
 .site-footer > .nav-rule{
-  margin-bottom: 48px;
+  margin-bottom: 28px;
 }
 
 .copyright{
