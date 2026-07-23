@@ -155,12 +155,29 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 /* ==========================================================================
    Products heading
    ========================================================================== */
-.products-heading{
+.products-heading
+.page-heading{
   font-family: var(--font-body);
   font-weight: 700;
   font-size: 22px;
   letter-spacing: 0.03em;
   margin: 48px 0 32px;
+}
+
+/* ==========================================================================
+   Pages text — for the about & contact pages
+   ========================================================================== */
+
+.page-copy{
+  max-width: 720px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--text);
+  padding-bottom: 80px;
+}
+.page-copy p{
+  margin: 0 0 20px;
 }
 
 /* ==========================================================================

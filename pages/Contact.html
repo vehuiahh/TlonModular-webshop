@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact – Tlön</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <!-- Top bar: search (left) / cart (right) -->
+    <div class="topbar">
+      <div class="wrap topbar-inner">
+        <button class="icon-link" type="button" aria-label="Search">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <circle
+              cx="10.5"
+              cy="10.5"
+              r="6.5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+            />
+            <line
+              x1="15.3"
+              y1="15.3"
+              x2="21"
+              y2="21"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+          </svg>
+          <span>Search</span>
+        </button>
+
+        <a class="icon-link" href="#" aria-label="Cart">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path
+              d="M6 8h12l-1.2 11a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 8Z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M9 8V6a3 3 0 0 1 6 0v2"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+            />
+          </svg>
+          <span>Cart</span>
+          <span class="cart-count" data-cart-count>0</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Site title -->
+    <header class="site-title-wrap">
+      <a href="../index.html" class="site-title">Tlön</a>
+      <p class="site-subtitle">Instrumentos de una Realidad Inventada</p>
+    </header>
+
+    <!-- Nav, sandwiched between two thin rule lines -->
+    <nav class="site-nav">
+      <div class="nav-rule"></div>
+      <div class="wrap nav-inner">
+        <a href="../index.html">Artilugios</a>
+        <a href="About.html">Sobre el proyecto</a>
+        <a href="Contact.html">Contacto</a>
+      </div>
+      <div class="nav-rule"></div>
+    </nav>
+
+    <main>
+      <div class="wrap">
+        <h1 class="page-heading">CONTACTO Y REDES SOCIALES</h1>
+
+        <div class="page-copy">
+          <p></p>
+          <p></p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="nav-rule"></div>
+      <div class="wrap">
+        <div class="footer-newsletter">
+          <h2>Newsletter</h2>
+          <p>Sign up for exclusive deals and company news</p>
+          <form class="newsletter-form">
+            <label class="sr-only" for="newsletter-email">Your email</label>
+            <input
+              type="email"
+              id="newsletter-email"
+              placeholder="Your email"
+              required
+            />
+            <button type="submit">Subscribe</button>
+          </form>
+          <p class="newsletter-msg" aria-live="polite"></p>
+        </div>
+
+        <p class="copyright">
+          Copyright &copy; <span data-year></span>,
+          <a href="../index.html">TLÖN LLC</a>.
+        </p>
+
+        <ul class="payment-icons">
+          <li>American Express</li>
+          <li>Apple Pay</li>
+          <li>Diners Club</li>
+          <li>Discover</li>
+          <li>Mastercard</li>
+          <li>PayPal</li>
+          <li>Visa</li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>
