@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alevosía – Tlön</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <!-- Top bar: search (left) / cart (right) -->
+    <div class="topbar">
+      <div class="wrap topbar-inner">
+        <button class="icon-link" type="button" aria-label="Buscar">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <circle
+              cx="10.5"
+              cy="10.5"
+              r="6.5"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+            />
+            <line
+              x1="15.3"
+              y1="15.3"
+              x2="21"
+              y2="21"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+            />
+          </svg>
+          <span>Buscar</span>
+        </button>
+
+        <a class="icon-link" href="#" aria-label="Carrito">
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path
+              d="M6 8h12l-1.2 11a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8L6 8Z"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M9 8V6a3 3 0 0 1 6 0v2"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.6"
+            />
+          </svg>
+          <span>Cart</span>
+          <span class="cart-count" data-cart-count>0</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Site title -->
+    <header class="site-title-wrap">
+      <a href="../index.html" class="site-title">Tlön</a>
+      <p class="site-subtitle">Instruments of an Invented Reality</p>
+    </header>
+
+    <!-- Nav, sandwiched between two thin rule lines -->
+    <nav class="site-nav">
+      <div class="nav-rule"></div>
+      <div class="wrap nav-inner">
+        <a href="../index.html" aria-current="page">Artilugios</a>
+        <a href="../pages/About.html">Sobre el proyecto</a>
+        <a href="../pages/Contact.html">Contacto</a>
+      </div>
+      <div class="nav-rule"></div>
+    </nav>
+
+    <main>
+      <div class="wrap product-page">
+        <!-- LEFT: gallery, scrolls normally -->
+        <div class="product-gallery">
+          <div class="gallery-promo">
+            <div class="img-placeholder" data-slot="promo">
+              Imagen promocional
+            </div>
+          </div>
+
+          <div class="gallery-grid">
+            <div class="gallery-thumb">
+              <div class="img-placeholder" data-slot="front">Frente</div>
+            </div>
+            <div class="gallery-thumb">
+              <div class="img-placeholder" data-slot="back">Trasera</div>
+            </div>
+            <div class="gallery-thumb">
+              <div class="img-placeholder" data-slot="top">Superior</div>
+            </div>
+            <div class="gallery-thumb">
+              <div class="img-placeholder" data-slot="bottom">Inferior</div>
+            </div>
+          </div>
+
+          <div class="gallery-iso">
+            <div class="img-placeholder" data-slot="iso">Vista isométrica</div>
+          </div>
+        </div>
+
+        <!-- RIGHT: info, stays in place while gallery scrolls -->
+        <div class="product-info-sticky">
+          <div class="product-info">
+            <h1 class="product-name">Alevosía</h1>
+            <p class="product-effect">Distorsión de Alta Ganancia</p>
+
+            <p class="product-tagline">
+              Una voz que muerde, sin perder el control.
+            </p>
+
+            <p class="product-price">$3,800.00 MXN</p>
+
+            <button class="add-to-cart-btn" data-product-name="Alevosía">
+              Añadir al Carrito
+            </button>
+            <p class="cart-note" aria-live="polite"></p>
+
+            <div class="divider"></div>
+            <div class="product-tabs" role="tablist">
+              <button
+                class="tab-btn"
+                data-tab="descripcion"
+                role="tab"
+                aria-selected="true"
+              >
+                Descripción
+              </button>
+              <button
+                class="tab-btn"
+                data-tab="detalles"
+                role="tab"
+                aria-selected="false"
+              >
+                Más Detalles
+              </button>
+            </div>
+            <div class="divider"></div>
+
+            <div class="tab-panels">
+              <div class="tab-panel" data-panel="descripcion" role="tabpanel">
+                <h2>Descripción</h2>
+                <p>
+                  Alevosía es una distorsión de ganancia variable construida
+                  sobre un núcleo de doble recorte, capaz de ir desde un gruñido
+                  áspero al borde del quiebre hasta un muro de saturación total.
+                </p>
+                <p>
+                  Una red activa de contorno grave/agudo se ubica antes de la
+                  etapa de recorte, por lo que el carácter de la distorsión
+                  cambia junto con el tono, no solo con el volumen.
+                </p>
+              </div>
+
+              <div
+                class="tab-panel"
+                data-panel="detalles"
+                role="tabpanel"
+                hidden
+              >
+                <h2>Más Detalles</h2>
+                <ul>
+                  <li>Footswitch mecánico de alta resistencia</li>
+                  <li>Bypass verdadero (true bypass)</li>
+                  <li>Controles independientes de Gain, Tono y Contorno</li>
+                  <li>Entrada de alimentación de 9V DC, negativo al centro</li>
+                  <li>Consumo de 14mA</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="nav-rule"></div>
+      <div class="wrap">
+        <div class="footer-newsletter">
+          <h2>Newsletter</h2>
+          <p>Sign up for exclusive deals and company news</p>
+          <form class="newsletter-form">
+            <label class="sr-only" for="newsletter-email">Your email</label>
+            <input
+              type="email"
+              id="newsletter-email"
+              placeholder="Your email"
+              required
+            />
+            <button type="submit">Subscribe</button>
+          </form>
+          <p class="newsletter-msg" aria-live="polite"></p>
+        </div>
+
+        <p class="copyright">
+          Copyright &copy; <span data-year></span>,
+          <a href="../index.html">TLÖN LLC</a>.
+        </p>
+
+        <ul class="payment-icons">
+          <li>American Express</li>
+          <li>Apple Pay</li>
+          <li>Diners Club</li>
+          <li>Discover</li>
+          <li>Mastercard</li>
+          <li>PayPal</li>
+          <li>Visa</li>
+        </ul>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

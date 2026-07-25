@@ -316,3 +316,163 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   .topbar-inner{ padding: 14px 20px; }
   .product-grid{ gap: 32px; }
 }
+
+/* ==========================================================================
+   Product detail page (e.g. products/alevosia.html)
+   ========================================================================== */
+.product-page{
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 64px;
+  align-items: start;
+  padding: 48px 0 90px;
+}
+
+/* --- Left: gallery --- */
+.gallery-promo{ margin-bottom: 16px; }
+.gallery-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.gallery-iso{ margin-bottom: 0; }
+
+.img-placeholder{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: var(--bg-alt);
+  border: 1px dashed var(--line-strong);
+  border-radius: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px;
+}
+.gallery-promo .img-placeholder,
+.gallery-iso .img-placeholder{ aspect-ratio: 16 / 10; }
+.gallery-thumb .img-placeholder{ aspect-ratio: 1 / 1; }
+
+/* --- Right: sticky info panel --- */
+.product-info-sticky{
+  position: sticky;
+  top: 40px;
+}
+
+.product-name{
+  font-family: var(--font-body);
+  font-weight: 800;
+  font-size: 34px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0 0 6px;
+}
+.product-effect{
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 22px;
+}
+.product-tagline{
+  font-size: 15.5px;
+  color: var(--text);
+  margin: 0 0 22px;
+}
+.product-price{
+  font-weight: 700;
+  font-size: 21px;
+  margin: 0 0 22px;
+}
+
+.add-to-cart-btn{
+  display: inline-block;
+  background: var(--text);
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  padding: 14px 30px;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+.add-to-cart-btn:hover{ background: #3a3a3a; }
+
+.cart-note{
+  min-height: 18px;
+  font-size: 12.5px;
+  color: var(--muted);
+  margin: 12px 0 0;
+}
+
+.divider{
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 26px 0;
+}
+
+.product-tabs{
+  display: flex;
+  gap: 32px;
+}
+.tab-btn{
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color .2s ease;
+}
+.tab-btn[aria-selected="true"]{ color: var(--text); }
+.tab-btn:hover{ color: var(--text); }
+
+.tab-panel h2{
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+}
+.tab-panel p{
+  color: var(--muted);
+  font-size: 14.5px;
+  margin: 0 0 16px;
+}
+.tab-panel ul{ margin: 0; }
+.tab-panel ul li{
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-size: 14.5px;
+}
+.tab-panel ul li::before{
+  content: "—";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* --- Responsive: stack columns, drop sticky --- */
+@media (max-width: 900px){
+  .product-page{
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .product-info-sticky{
+    position: static;
+  }
+}

@@ -138,6 +138,27 @@
   }
 
   /* ------------------------------------------------------------------
+     Product page tabs (Descripción / Más Detalles)
+     ------------------------------------------------------------------ */
+  function initProductTabs() {
+    document.querySelectorAll(".tab-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const target = btn.getAttribute("data-tab");
+        const tabGroup = btn.closest(".product-tabs");
+        const panelGroup = document.querySelector(".tab-panels");
+
+        tabGroup.querySelectorAll(".tab-btn").forEach((b) => {
+          b.setAttribute("aria-selected", b === btn ? "true" : "false");
+        });
+
+        panelGroup.querySelectorAll(".tab-panel").forEach((panel) => {
+          panel.hidden = panel.getAttribute("data-panel") !== target;
+        });
+      });
+    });
+  }
+
+  /* ------------------------------------------------------------------
      Footer year
      ------------------------------------------------------------------ */
   function setYear() {
@@ -151,4 +172,12 @@
     initNewsletterForms();
     setYear();
   });
+
+document.addEventListener("DOMContentLoaded", () => {
+    mountPedalArt();
+    initNewsletterForms();
+    setYear();
+    initProductTabs();   // ← add this line
+  });
+
 })();
