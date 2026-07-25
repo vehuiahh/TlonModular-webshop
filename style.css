@@ -155,7 +155,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 /* ==========================================================================
    Products heading
    ========================================================================== */
-.products-heading
+.products-heading,
 .page-heading{
   font-family: var(--font-body);
   font-weight: 700;
@@ -364,7 +364,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   top: 40px;
 }
 
-.product-name{
+.product-page .product-name{
   font-family: var(--font-body);
   font-weight: 800;
   font-size: 34px;
@@ -372,7 +372,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   text-transform: uppercase;
   margin: 0 0 6px;
 }
-.product-effect{
+.product-page .product-effect{
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -385,7 +385,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   color: var(--text);
   margin: 0 0 22px;
 }
-.product-price{
+.product-page .product-price{
   font-weight: 700;
   font-size: 21px;
   margin: 0 0 22px;
