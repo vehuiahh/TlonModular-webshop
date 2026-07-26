@@ -488,7 +488,8 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 
 .story-intro{
   padding: 90px 40px 60px;
-  max-width: 640px;
+  max-width: 840px;
+  margin: 0 auto;
 }
 .story-title{
   font-family: var(--font-title);
@@ -529,7 +530,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 320px;
+  width: 400px;
   transform: translate(-50%, -50%);
   will-change: transform;
 }
@@ -543,7 +544,7 @@ a:focus-visible, button:focus-visible, input:focus-visible{
 .story-cards{
   position: absolute;
   top: 50%;
-  right: 0;
+  right: 80px;
   width: 380px;
   transform: translateY(-50%);
   display: flex;
