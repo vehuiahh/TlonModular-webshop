@@ -476,3 +476,127 @@ a:focus-visible, button:focus-visible, input:focus-visible{
     position: static;
   }
 }
+
+/* ==========================================================================
+   Product story section — scroll-driven pedal + card reveal
+   ========================================================================== */
+.story-section{
+  background: var(--pedal-color, #2f5f86);
+  color: #fff;
+  margin-top: 60px;
+}
+
+.story-intro{
+  padding: 90px 40px 60px;
+  max-width: 640px;
+}
+.story-title{
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 32px;
+  margin: 0 0 20px;
+}
+.story-text{
+  font-size: 16px;
+  line-height: 1.8;
+  color: rgba(255,255,255,.85);
+  margin: 0;
+}
+
+/* Tall scroll container — its height is the "scroll budget" for the animation.
+   Increase/decrease 300vh to make the effect play out over more/less scrolling. */
+.story-scroll{
+  position: relative;
+  height: 300vh;
+}
+
+.story-sticky{
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.story-stage{
+  position: relative;
+  width: 100%;
+  height: 70vh;
+}
+
+.story-pedal{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+.story-pedal .img-placeholder{
+  aspect-ratio: 3 / 4;
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.35);
+  color: rgba(255,255,255,.85);
+}
+
+.story-cards{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 380px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+.story-card{
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+.story-card.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+.story-card h3{
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0 0 10px;
+}
+.story-card p{
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: rgba(255,255,255,.85);
+  margin: 0;
+}
+
+/* Mobile fallback: turn off the pin/animation entirely, just stack everything */
+@media (max-width: 760px){
+  .story-scroll{ height: auto; }
+  .story-sticky{
+    position: static;
+    height: auto;
+    overflow: visible;
+    display: block;
+  }
+  .story-stage{ height: auto; padding: 40px 0; }
+  .story-pedal{
+    position: static;
+    transform: none !important;
+    margin: 0 auto 40px;
+  }
+  .story-pedal .img-placeholder{ aspect-ratio: 4 / 3; }
+  .story-cards{
+    position: static;
+    width: 100%;
+    transform: none;
+    gap: 24px;
+  }
+  .story-card{
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

@@ -167,6 +167,59 @@
     });
   }
 
+  /* ------------------------------------------------------------------
+     Product story scroll animation (pedal travels down+left, then
+     info cards reveal one by one as scrolling continues)
+     ------------------------------------------------------------------ */
+  function initStoryScroll() {
+    const storyScroll = document.querySelector("[data-story]");
+    if (!storyScroll) return;
+
+    const pedal = storyScroll.querySelector("[data-story-pedal]");
+    const cards = Array.from(storyScroll.querySelectorAll("[data-story-card]"));
+
+    // How far the pedal travels, in pixels, relative to its starting spot
+    const endX = -220; // negative = moves left
+    const endY = 0;  // positive = moves down
+
+    // Fraction of the total scroll distance used just for the pedal's move
+    // (the remaining fraction is divided evenly between the 3 cards)
+    const moveEnd = 0.4;
+
+    let ticking = false;
+
+    function update() {
+      const rect = storyScroll.getBoundingClientRect();
+      const total = storyScroll.offsetHeight - window.innerHeight;
+      let progress = total > 0 ? -rect.top / total : 0;
+      progress = Math.min(Math.max(progress, 0), 1);
+
+      const moveT = Math.min(progress / moveEnd, 1);
+      const x = endX * moveT;
+      const y = endY * moveT;
+      pedal.style.transform = `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`;
+
+      const cardRange = (1 - moveEnd) / cards.length;
+      cards.forEach((card, i) => {
+        const threshold = moveEnd + cardRange * i;
+        card.classList.toggle("is-visible", progress >= threshold);
+      });
+
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    update();
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     mountPedalArt();
     initNewsletterForms();
@@ -178,6 +231,14 @@ document.addEventListener("DOMContentLoaded", () => {
     initNewsletterForms();
     setYear();
     initProductTabs();   // ← add this line
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    mountPedalArt();
+    initNewsletterForms();
+    setYear();
+    initProductTabs();
+    initStoryScroll();   // ← add this line
   });
 
 })();
